@@ -137,7 +137,7 @@ def peakPick(spectra, x):
     return peaks
 
 
-def calculateSpectrumStats(fullData, wavenumbers, savGolFilterSize, topHatFilterSize, spectrumWidthThreshold, peakThreshold):
+def calculateSpectrumStats(fullData, wavenumbers, savGolFilterSize, topHatFilterSize, peakWidthThreshold, peakThreshold):
     sizeToIgnore = int((topHatFilterSize - 1) / 2)
 
     processedData = preprocessSpectra(
@@ -156,7 +156,7 @@ def calculateSpectrumStats(fullData, wavenumbers, savGolFilterSize, topHatFilter
 
     for spectrumIndex in range(fullData.shape[0]):
         peaksToConsider = peaks[peaks[:, 0] == spectrumIndex, :]
-        numPeaks = np.sum(np.logical_and((peaksToConsider[:, 3] - peaksToConsider[:, 2]) >= spectrumWidthThreshold,
+        numPeaks = np.sum(np.logical_and((peaksToConsider[:, 3] - peaksToConsider[:, 2]) >= peakWidthThreshold,
                                          peaksToConsider[:, 4] > peakThreshold))
 
         # print(spectrumIndex, maxProcessedData[spectrumIndex])
