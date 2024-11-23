@@ -2,11 +2,23 @@
 
 ## Filter spectra
 
+For each input file (`{filename}.txt`), generate two output files (`{filename}_keep.txt` with the 'good' quality spectra and `{filename}_discard.txt` for the 'poor' quality spectra). In addition, a summary csv file is generated containing statistics on the number of files deemed to have good or poor quality based on the parameters supplied.
+
+### Usage 
+
+`python raman-filter.py --data-folder /path/to/data`
+
 ### Parameters
 
 | Parameter | Description|
 |---------|-------|
-| ....
+| `--data-folder` | Location of the data to be processed |
+| `--savitzky-golay-filter` | Savitzky-Golay window size. **Example:** `--savitzky-golay-filter 51` |
+| `--top-hat-filter` | TopHat window size. **Example:** `--top-hat-filter 21` |
+| `--peak-intensity-threshold` | Normalised peak intensity threshold. **Example:** `--peak-intensity-threshold 0.001` |
+| `--peak-width-threshold` | Peak width (in bins/channels). **Example:** `--peak-width-threshold 5` |
+| `--std-threshold` | Standard deviation threshold. **Example:** `--std-threshold 0.001` |
+| `--num-peaks` | Number of peaks. **Example** `--num-peaks 5` |
 
 ## [Optional] Find optimal parameters 
 
